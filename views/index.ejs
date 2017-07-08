@@ -1,22 +1,21 @@
 <% include ./partials/header %>
 
-<div class="ui main text container">
-	<div class="ui huge dividing header">RESTful blog app</div>
-	<div class="ui top attached">
-		<div class="ui divided items">
-			<% blogs.forEach((blog) => { %>
-				<div class="item">
+<div class="main container">
+	<div class="display-4" id="head-title">IC-PIP project <i class="fa fa-heart" aria-hidden="true"></i></div>
+
+			<% blogs.reverse().forEach((blog) => { %>
+				<div class="card mb-3 border-0">
 					<div class="image">
-						<img src="<%=blog.image%>" class="ui image">
+						<img src="<%=blog.image%>" class="img-fluid rounded-top">
 					</div>
-					<div class="content">
-						<a class="header" href="/blogs/<%= blog._id %>">
+					<div class="card-block">
+						<a class="h1" href="/blogs/<%= blog._id %>">
 							<%= blog.title %>
 						</a>
-						<div class="meta">
-							<span><%= blog.created.toDateString() %></span>
-						</div>
-						<div class="description"><p><%= blog.body.substring(0, 100) %> . . .</p>
+						<p class="card-text">
+							<small class="text-muted"><%= blog.created.toDateString() %></small>
+						</p>
+						<div class="lead"><p><%= blog.body.substring(0, 200) %> . . .</p>
 						</div>
 
 						<div class="extra">
@@ -24,10 +23,9 @@
 							</a></div>
 						</div>
 					</div>
-					<%})  %>
+				<%})  %>
 		</div>
-	</div>
-</div>
+
 
 
 <% include ./partials/footer %>
